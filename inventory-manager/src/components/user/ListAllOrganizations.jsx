@@ -19,7 +19,7 @@ const ListAllOrganizations = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await Axios.get("http://3.95.226.179:8080/user/all");
+        const response = await Axios.get("http://localhost:8080/user/all");
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);

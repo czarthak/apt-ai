@@ -12,7 +12,7 @@ const Dashboard2 = ({ token }) => {
         // Assuming you have a function to fetch apartments for a specific user
         const fetchUserApts = async () => {
             try {
-                const response = await axios.post('http://3.95.226.179:8080/apt/user/public', { email: userEmail });
+                const response = await axios.post('http://localhost:8080/apt/user/public', { email: userEmail });
                 if (response.data.result === 'success') {
                     // Assuming the response structure matches what the Map component expects
                     setUserApts(response.data.descriptions);

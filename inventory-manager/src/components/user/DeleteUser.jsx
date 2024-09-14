@@ -9,7 +9,7 @@ export const DeleteUser = (token) => {
   console.log(token);
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://3.95.226.179:8080/user/delete", {
+    Axios.post("http://localhost:8080/user/delete", {
       jwt: token.token.jwt
     }).then((response) => {
       // console.log(response);

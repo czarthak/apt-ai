@@ -12,7 +12,7 @@ export const Register = (props) => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://3.95.226.179:8080/user/add", {
+    Axios.post("http://localhost:8080/user/add", {
       email: email,
       lname: lname,
       fname: fname,

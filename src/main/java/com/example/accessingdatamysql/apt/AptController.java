@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins="http://3.95.226.179:3000")
+@CrossOrigin
 @RestController // This means that this class is a Controller
 @RequestMapping(path="/apt") // This means URL's start with /demo (after Application path)
 public class AptController {

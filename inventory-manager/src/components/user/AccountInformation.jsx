@@ -51,7 +51,7 @@ const AccountInformation = ({ token }) => {
       formData.append('imageFile', file);
 
       // Include the email in the URL as a query parameter
-      const url = `http://3.95.226.179:8080/user/img?email=${encodeURIComponent(userInfo.email)}`;
+      const url = `http://localhost:8080/user/img?email=${encodeURIComponent(userInfo.email)}`;
 
       Axios.post(url, formData, {
         headers: {
@@ -71,7 +71,7 @@ const AccountInformation = ({ token }) => {
 
   const removeApartment = async (id) => {
     try {
-      const response = await Axios.post('http://3.95.226.179:8080/apt/user/delete', {
+      const response = await Axios.post('http://localhost:8080/apt/user/delete', {
         jwt: token.jwt,
         id: id,
       });
@@ -103,7 +103,7 @@ const AccountInformation = ({ token }) => {
 
   const getUserInfo = async () => {
     try {
-      const response = await Axios.post("http://3.95.226.179:8080/user/user", {
+      const response = await Axios.post("http://localhost:8080/user/user", {
         jwt: token.jwt,
       });
       console.log(response);
@@ -119,7 +119,7 @@ const AccountInformation = ({ token }) => {
 
   const handleUpdate = async () => {
     try {
-      const response = await Axios.put("http://3.95.226.179:8080/user/update", {
+      const response = await Axios.put("http://localhost:8080/user/update", {
         ...userInfo,
         jwt: token.jwt,
       });
@@ -134,7 +134,7 @@ const AccountInformation = ({ token }) => {
   const handleLocationSelect = async (location) => {
     console.log(location);
     try {
-      const response = await Axios.post("http://3.95.226.179:8080/apt/user/add", {
+      const response = await Axios.post("http://localhost:8080/apt/user/add", {
         jwt: token.jwt,
         description: location.description,
         id: location.reference

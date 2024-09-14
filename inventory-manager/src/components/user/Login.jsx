@@ -15,7 +15,7 @@ export const Login = ({ setToken }) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    Axios.post("http://${process.env.IP}:8080/auth/login", {
+    Axios.post("http://localhost:8080/auth/login", {
       email: email,
       password: pass,
     })

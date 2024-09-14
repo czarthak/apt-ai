@@ -9,7 +9,7 @@ const UserInfo = ({ email }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('http://3.95.226.179:8080/apt/user/public', { email: email});
+                const response = await axios.post('http://localhost:8080/apt/user/public', { email: email});
                 if (response.data.result === 'success') {
                     setUserData(response.data);
                 } else {

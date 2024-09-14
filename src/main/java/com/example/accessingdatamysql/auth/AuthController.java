@@ -21,7 +21,7 @@ import com.example.accessingdatamysql.UserRepository;
 import com.example.accessingdatamysql.User;
 
 @Controller
-@CrossOrigin(origins="http://3.95.226.179:3000")
+@CrossOrigin
 @RequestMapping(path="/auth") // This means URL's start with /auth (after Application path)
 public class AuthController {
 

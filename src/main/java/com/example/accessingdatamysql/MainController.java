@@ -22,8 +22,8 @@ import java.nio.file.Path;
 import com.example.accessingdatamysql.auth.AuthController;
 import java.util.Optional;
 
-//@CrossOrigin(origins = "http://localhost:3000")
-@CrossOrigin(origins="http://3.95.226.179:3000")
+@CrossOrigin
+// @CrossOrigin(origins="http://3.95.226.179:3000")
 @RestController // This means that this class is a Controller
 @RequestMapping(path = "/user") // This means URL's start with /user (after Application path)
 public class MainController {

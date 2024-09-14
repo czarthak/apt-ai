@@ -21,7 +21,7 @@ const Map3 = ({ token, userApts }) => {
 
     const fetchApartments = async () => {
         try {
-            const response = await axios.post('http://3.95.226.179:8080/user/user', {
+            const response = await axios.post('http://localhost:8080/user/user', {
                 jwt: token.jwt
             });
             setApartments(response.data.apt);
