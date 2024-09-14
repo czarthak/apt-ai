@@ -1,0 +1,183 @@
+/* AccountInformation.css */
+
+.account-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.profile-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #007bff;
+}
+
+.initials-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: #fff;
+    background-color: #007bff;
+    margin-bottom: 10px;
+}
+
+.info-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+}
+
+.info-form input[type="text"],
+.info-form input[type="password"],
+.info-form input[type="email"],
+.info-form textarea,
+.info-form select {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.info-form input[type="text"]:focus,
+.info-form input[type="password"]:focus,
+.info-form input[type="email"]:focus,
+.info-form textarea:focus,
+.info-form select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+.info-form label {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.success-message {
+    color: #28a745;
+    background-color: #dff0d8;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+    display: none;
+    /* Initially hide the message */
+    animation: fadeInOut 3s forwards;
+    /* Animation to fade in and then out */
+}
+
+@keyframes fadeInOut {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.personality-test-button {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.selected-apartments {
+    margin-top: 20px;
+}
+
+.apartment-item {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.apartment-item:hover {
+    border-color: #007bff;
+    /* Highlight color on hover */
+}
+
+.remove-apartment-btn {
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    max-width: 40px;
+}
+
+.remove-apartment-btn:hover {
+    background-color: darkred;
+}
+
+
+.apartment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.remove-apartment-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #dc3545;
+}

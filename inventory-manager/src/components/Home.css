@@ -1,0 +1,102 @@
+.home-container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Adds space between the images */
+}
+
+.images-container img {
+  flex: 1 1 200px; /* Images can grow and shrink from a base of 200px */
+  max-width: calc(50% - 20px); /* Maximum width is half of the container minus the gap */
+  margin-bottom: 20px; /* Adds space below each image */
+  border-radius: 8px; /* Adds a slight border radius for better aesthetics */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  transition: transform 0.3s ease; /* Smooth transformation on hover */
+}
+
+.images-container img:hover {
+  transform: scale(1.05); /* Slightly enlarges the image on hover */
+}
+
+.images-container img:nth-child(3) {
+  max-width: 50%; /* Adjust this value to make the third image smaller */
+  margin: auto; /* Centers the image */
+}
+
+h1 {
+  color: #007bff;
+  font-size: 2.5em; /* Increases the font size for better readability */
+  margin-bottom: 20px; /* Adds space below the heading */
+}
+
+h2 {
+  color: #333;
+  font-size: 2em; /* Increases the font size for better readability */
+  margin-bottom: 15px; /* Adds space below the subheading */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 60%; /* Limits the width for better readability */
+  text-align: left; /* Aligns text to the left for a cleaner look */
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease; /* Smooth background color change on hover */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  color: #007bff;
+  transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Darkens the link color on hover for better visual feedback */
+}
+
+.login-signup-bubble {
+  background-color: #003366; /* Dark blue color */
+  color: white;
+  padding: 15px; /* Adjusted padding for better balance */
+  margin: 20px auto; /* Centered with more space */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  width: auto; /* Adjust this as needed */
+  max-width: 40%; /* Controls the maximum width */
+  display: block; /* Ensures that margin auto has an effect */
+}
+
+.login-signup-bubble a {
+  color: #FFD700; /* Gold color for contrast and emphasis */
+  text-decoration: none; /* Removes underline from links */
+  transition: text-decoration 0.3s ease; /* Smooth underline change on hover */
+}
+
+.login-signup-bubble a:hover {
+  text-decoration: underline; /* Restores underline on hover for visual feedback */
+}

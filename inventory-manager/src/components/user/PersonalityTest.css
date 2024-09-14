@@ -1,0 +1,115 @@
+/* Base container adjustments for a modern aesthetic look */
+.personality-test-container {
+    background-color: #ffffff; /* Light background for a clean look */
+    padding: 2rem;
+    border-radius: 1rem; /* Rounded corners for soft UI */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 800px;
+    margin: 2rem auto;
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  }
+  
+  /* Enhanced label styling for a modern, button-like appearance */
+  .personality-test-container label {
+    background-color: #f0f4f8;
+    color: #333;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px; /* More rounded edges for a softer UI */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-weight: 500; /* Medium font weight for readability */
+  }
+  
+  /* Dynamic background and color change for selected label */
+  .personality-test-container .label-selected {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow for selected state */
+  }
+  
+  /* Subtle hover effect enhancement for unselected labels */
+  .personality-test-container label:hover {
+    background-color: #e2e6ea;
+  }
+  
+  /* Hover effect for selected label to enhance user feedback */
+  .personality-test-container .label-selected:hover {
+    background-color: #0056b3; /* Slightly darker shade on hover */
+  }
+  
+  /* Ensuring the radio button remains invisible */
+  .personality-test-container input[type="radio"] {
+    display: none;
+  }
+  
+  /* Title and description styling for modern aesthetic */
+  .personality-test-container h1 {
+    color: #007bff;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  .personality-test-container p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Submit button styling for a consistent modern look */
+  .personality-test-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px; /* Consistent with label/button styling */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+  }
+  
+  .personality-test-container button:hover {
+    background-color: #0056b3; /* Slightly darker shade on hover */
+  }
+  
+  /* Result display adjustments for better visibility */
+  .personality-test-container .result {
+    background-color: #e9f5ff; /* Light blue background for visibility */
+    color: #007bff;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+  }
+  
+  /* Back link styling for better integration with the modern theme */
+  .personality-test-container .back-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .personality-test-container .back-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+  }
+  
+  /* Responsive adjustments for mobile views */
+  @media (max-width: 768px) {
+    .personality-test-container {
+      padding: 1rem;
+      margin: 1rem;
+    }
+  
+    .personality-test-container h1 {
+      font-size: 1.5rem;
+    }
+  
+    .personality-test-container label {
+      padding: 10px 20px;
+    }
+  }
+  
