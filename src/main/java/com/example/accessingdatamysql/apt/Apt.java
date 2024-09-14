@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity // This tells Hibernate to make a table out of this class
-@Table(name = "APT")
+@Table(name = "apt")
 public class Apt {
 
     @NotNull

@@ -3,7 +3,7 @@ package com.example.accessingdatamysql;
 import jakarta.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
-@Table(name = "USER")
+@Table(name = "user")
 public class User {
 
     private String fname;
