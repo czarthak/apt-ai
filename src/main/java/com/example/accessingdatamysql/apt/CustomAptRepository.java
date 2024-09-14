@@ -18,7 +18,7 @@ public class CustomAptRepository {
     @Transactional
     public List<Object[]> getAptDescriptions(String email)
     {
-        String query = "SELECT description, id FROM APT WHERE email = ?1";
+        String query = "SELECT description, id FROM apt WHERE email = ?1";
 
         Query q = this.entityManager.createNativeQuery(query)
                 .setParameter(1, email);
@@ -27,7 +27,7 @@ public class CustomAptRepository {
     @Transactional
     public boolean deleteApt(String email, String id)
     {
-        String query = "DELETE FROM APT a WHERE a.email = ?1 AND a.id = ?2";
+        String query = "DELETE FROM apt a WHERE a.email = ?1 AND a.id = ?2";
 
         Query q = this.entityManager.createNativeQuery(query)
                 .setParameter(1, email)
@@ -38,7 +38,7 @@ public class CustomAptRepository {
     @Transactional
     public Object publicApt(String email)
     {
-        String query = "SELECT fname, lname, phone_number, year, budget, personal_trait, major FROM USER u WHERE u.email = ?1";
+        String query = "SELECT fname, lname, phone_number, year, budget, personal_trait, major FROM user u WHERE u.email = ?1";
         Query q = this.entityManager.createNativeQuery(query)
                 .setParameter(1, email);
         return q.getSingleResult();

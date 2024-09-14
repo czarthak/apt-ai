@@ -18,7 +18,7 @@ public class CustomUserRepo {
 
     @Transactional
     public List<Object[]> getAllUsers() {
-        String nativeQuery = "SELECT u.email, u.fname, u.lname, u.phoneNumber, u.year, u.major, u.bio, u.existingApart, u.preferApart, u.budget, u.personalTrait FROM USER u";
+        String nativeQuery = "SELECT u.email, u.fname, u.lname, u.phoneNumber, u.year, u.major, u.bio, u.existingApart, u.preferApart, u.budget, u.personalTrait FROM user u";
         Query query = entityManager.createNativeQuery(nativeQuery);
         @SuppressWarnings("unchecked")
         List<Object[]> resultList = query.getResultList();
