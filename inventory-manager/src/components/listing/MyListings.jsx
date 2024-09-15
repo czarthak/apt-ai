@@ -29,7 +29,7 @@ const MyListings = ({ token }) => {
     description: "",
     id: "",
     pets: "NO",
-    sex: "MALE",
+    sex: "EITHER",
   });
   const [userListings, setUserListings] = useState([]);
 
@@ -51,6 +51,24 @@ const MyListings = ({ token }) => {
       }
     };
 
+    const getAddressFromPlaceId = async (placeId) => {
+      const apiKey = "AIzaSyB5XqqsxtwR_QCPE8nNwXuAg8EU2EwsoiA"; // Replace with your API key
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&key=${apiKey}`;
+
+      try {
+        const response = await Axios.get(url);
+        if (response.data.status === "OK") {
+          const address = response.data.results[0].formatted_address;
+          return address;
+        } else {
+          throw new Error("Geocoding failed");
+        }
+      } catch (error) {
+        console.error("Error fetching address:", error);
+        return null;
+      }
+    };
+
     const fetchUserListings = async () => {
       try {
         const response = await Axios.post(
@@ -60,7 +78,17 @@ const MyListings = ({ token }) => {
           }
         );
         if (response.data.result === "success") {
-          setUserListings(response.data.data || []); // Ensure it's an array
+          const listingsData = response.data.data;
+
+          // Fetch addresses for each listing
+          const updatedListings = await Promise.all(
+            listingsData.map(async (listing) => {
+              const address = await getAddressFromPlaceId(listing.id);
+              return { ...listing, address };
+            })
+          );
+          console.log(updatedListings);
+          setUserListings(updatedListings || []); // Ensure it's an array
         } else {
           console.error("Error fetching listings:", response.data);
         }
@@ -74,6 +102,23 @@ const MyListings = ({ token }) => {
   }, [token.jwt]);
 
   const handleCreateListing = async () => {
+    const getAddressFromPlaceId = async (placeId) => {
+      const apiKey = "AIzaSyB5XqqsxtwR_QCPE8nNwXuAg8EU2EwsoiA"; // Replace with your API key
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&key=${apiKey}`;
+      try {
+        const response = await Axios.get(url);
+        if (response.data.status === "OK") {
+          const address = response.data.results[0].formatted_address;
+          return address;
+        } else {
+          throw new Error("Geocoding failed");
+        }
+      } catch (error) {
+        console.error("Error fetching address:", error);
+        return null;
+      }
+    };
+
     const requiredFields = [
       "price",
       "description",
@@ -112,9 +157,14 @@ const MyListings = ({ token }) => {
       console.log("Create Listing Response:", response.data);
 
       if (response.data.result === "success") {
+        const thisListing = response.data.data;
+        const address = await getAddressFromPlaceId(thisListing.id);
+
+        const updatedListing = { ...thisListing, address };
+
         setUserListings((prevListings) => [
           ...prevListings,
-          response.data.data || {}, // Ensure listing is not undefined
+          updatedListing || {}, // Ensure listing is not undefined
         ]);
       } else {
         console.error("Error creating listing:", response.data);
@@ -225,7 +275,7 @@ const MyListings = ({ token }) => {
             label="Sex">
             <MenuItem value="MALE">Male</MenuItem>
             <MenuItem value="FEMALE">Female</MenuItem>
-            <MenuItem value="ANY">Any</MenuItem>
+            <MenuItem value="EITHER">Any</MenuItem>
           </Select>
         </FormControl>
         <Places
@@ -258,7 +308,7 @@ const MyListings = ({ token }) => {
               }}>
               <CardContent>
                 <Typography variant="h6" component="div">
-                  Listing {listing.id}
+                  {listing.address}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   Email: {listing.email}
