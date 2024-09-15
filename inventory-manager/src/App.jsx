@@ -26,6 +26,7 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 import NotFound from "./components/error/NotFound";
 import Dashboard2 from "./components/map/Dashboard";
 import { SearchAllListings } from "./components/listing/SearchAllListings";
+import MyListings from "./components/listing/MyListings";
 
 function App() {
   const { token, setToken } = useToken();
@@ -61,7 +62,8 @@ function App() {
               element={<AccountInformation token={token} />}
             />
             <Route path="/searchListings" element={<SearchAllListings />} />
-          </Route>
+            <Route path="/myListings" element={<MyListings token={token} />} />
+        </Route>
           <Route path="/listing/:id" element={<ListingDetails />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/404" element={<NotFound />} />

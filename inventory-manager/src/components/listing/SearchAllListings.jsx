@@ -17,68 +17,68 @@ import {
 import React, { useState, useEffect } from "react";
 
 const SearchAllListings = () => {
-  const listingData = [
-    {
-      email: "john.doe@example.com",
-      description:
-        "A cozy apartment near the campus with a large living room and modern kitchen.",
-      people: 2,
-      bathrooms: 1,
-      price: 800.0,
-      pets: "NO",
-      sex: "EITHER",
-      id: "listing001",
-      db_id: 1,
-    },
-    {
-      email: "jane.smith@example.com",
-      description:
-        "Spacious 3-bedroom house with a backyard. Perfect for pet lovers.",
-      people: 3,
-      bathrooms: 2,
-      price: 1200.0,
-      pets: "YES",
-      sex: "FEMALE",
-      id: "listing002",
-      db_id: 2,
-    },
-    {
-      email: "alice.brown@example.com",
-      description:
-        "Modern apartment with 1 bedroom and 1 bathroom, ideal for a single person or a couple.",
-      people: 1,
-      bathrooms: 1,
-      price: 950.0,
-      pets: "SERVICE",
-      sex: "EITHER",
-      id: "listing003",
-      db_id: 3,
-    },
-    {
-      email: "mark.jones@example.com",
-      description:
-        "2-bedroom apartment, walking distance to public transport and grocery stores.",
-      people: 2,
-      bathrooms: 1,
-      price: 700.0,
-      pets: "NO",
-      sex: "MALE",
-      id: "listing004",
-      db_id: 4,
-    },
-    {
-      email: "emily.watson@example.com",
-      description:
-        "Luxury apartment with 3 bedrooms, 2 bathrooms, and a pet-friendly policy.",
-      people: 3,
-      bathrooms: 2,
-      price: 1500.0,
-      pets: "YES",
-      sex: "EITHER",
-      id: "listing005",
-      db_id: 5,
-    },
-  ];
+  // const listingData = [
+  //   {
+  //     email: "john.doe@example.com",
+  //     description:
+  //       "A cozy apartment near the campus with a large living room and modern kitchen.",
+  //     people: 2,
+  //     bathrooms: 1,
+  //     price: 800.0,
+  //     pets: "NO",
+  //     sex: "EITHER",
+  //     id: "listing001",
+  //     db_id: 18,
+  //   },
+  //   {
+  //     email: "jane.smith@example.com",
+  //     description:
+  //       "Spacious 3-bedroom house with a backyard. Perfect for pet lovers.",
+  //     people: 3,
+  //     bathrooms: 2,
+  //     price: 1200.0,
+  //     pets: "YES",
+  //     sex: "FEMALE",
+  //     id: "listing002",
+  //     db_id: 22,
+  //   },
+  //   {
+  //     email: "alice.brown@example.com",
+  //     description:
+  //       "Modern apartment with 1 bedroom and 1 bathroom, ideal for a single person or a couple.",
+  //     people: 1,
+  //     bathrooms: 1,
+  //     price: 950.0,
+  //     pets: "SERVICE",
+  //     sex: "EITHER",
+  //     id: "listing003",
+  //     db_id: 23,
+  //   },
+  //   {
+  //     email: "mark.jones@example.com",
+  //     description:
+  //       "2-bedroom apartment, walking distance to public transport and grocery stores.",
+  //     people: 2,
+  //     bathrooms: 1,
+  //     price: 700.0,
+  //     pets: "NO",
+  //     sex: "MALE",
+  //     id: "listing004",
+  //     db_id: 24,
+  //   },
+  //   {
+  //     email: "emily.watson@example.com",
+  //     description:
+  //       "Luxury apartment with 3 bedrooms, 2 bathrooms, and a pet-friendly policy.",
+  //     people: 3,
+  //     bathrooms: 2,
+  //     price: 1500.0,
+  //     pets: "YES",
+  //     sex: "EITHER",
+  //     id: "listing005",
+  //     db_id: 25,
+  //   },
+  // ];
 
   const navigate = useNavigate();
 
@@ -88,13 +88,13 @@ const SearchAllListings = () => {
   const [filterPets, setFilterPets] = useState("");
   const [filterSex, setFilterSex] = useState("");
 
-  const [listings, setListings] = useState(listingData);
+  const [listings, setListings] = useState([]);
 
   useEffect(() => {
     const fetchListings = async () => {
       try {
         const response = await Axios.get("http://localhost:8080/listing/all");
-        setListings(response.data);
+        setListings(response.data.data);
       } catch (error) {
         console.error("Error fetching listings:", error);
       }
@@ -241,7 +241,7 @@ const SearchAllListings = () => {
               <CardActions>
                 <Button
                   size="small"
-                  onClick={() => navigate(`/listing/${listing.db_id}`)}>
+                  onClick={() => navigate(`/listing/${listing.dbid}`)}>
                   View Details
                 </Button>
               </CardActions>

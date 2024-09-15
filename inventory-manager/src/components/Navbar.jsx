@@ -85,6 +85,12 @@ const Navbar = ({ token }) => {
           </Typography>
           {isMobile ? (
             <>
+              <li>
+                <NavLink to="/login">Login</NavLink>
+              </li>
+              <li>
+                <NavLink to="/register">Register</NavLink>
+              </li>
               <IconButton
                 color="inherit"
                 edge="end"

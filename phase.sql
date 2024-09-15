@@ -64,10 +64,11 @@ CREATE TABLE IF NOT EXISTS listing (
   CONSTRAINT fk_user_listing FOREIGN KEY (email) REFERENCES user (email)
 );
 
-INSERT INTO listing(email, description, people, bathrooms, price, pets, sex, id) VALUES
-('alicedoe@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 2, 2, 800, 'YES', 'FEMALE', 'ChIJn0P0cmSVTYgR5C5kZoj5N7U');
-
-
-
-
-;
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id, dbid) 
+VALUES
+('janesmith@example.com', 'bbl drizzy', 19, 2, 50.00, 'NO', 'FEMALE', 'ChIJr0LOfG2VTYgRRiv2A2Hfo9k', 11),
+('alicedoe@example.com', 'banana house', 2, 2, 7500.00, 'NO', 'EITHER', 'ChIJr0LOfG2VTYgRRiv2A2Hfo9k', 12),
+('alex.turner@example.com', 'asdfasdf', 2, 5, 500.00, 'YES', 'MALE', 'ChIJr0LOfG2VTYgRRiv2A2Hfo9k', 13),
+('alicedoe@example.com', 'good very nice house', 2, 2, 1.00, 'NO', 'FEMALE', 'ChIJT6wA1RSVTYgR-jS1Xr6qnbs', 14),
+('david.white@example.com', 'skibidi ohio land', 3, 2, 90.00, 'NO', 'MALE', 'ChIJ3ddNLK3wQIgRPwQBAsPf1EA', 15),
+('mike.jackson@example.com', 'edge bitch', 4, 4, 1000.00, 'NO', 'MALE', 'ChIJadHyQW6VTYgRJDQmIlUC2Ao', 16);
