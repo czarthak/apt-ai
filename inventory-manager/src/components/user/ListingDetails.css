@@ -1,124 +1,95 @@
-/* Container for the entire listing details page */
+/* Container for the entire listing page */
 .listing-container {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
   
-  /* Header section for listing title and price */
+  /* Header section with title and price */
   .listing-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
     margin-bottom: 20px;
   }
   
   .listing-header h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 28px;
     margin: 0;
   }
   
   .listing-price {
-    font-size: 20px;
+    font-size: 24px;
     color: #007bff;
-    font-weight: bold;
   }
   
-  /* Section for description */
+  /* Image gallery */
+  .listing-gallery {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .listing-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Details section */
   .listing-details {
     margin-bottom: 20px;
   }
   
   .listing-details h2 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 10px;
-    color: #333;
   }
   
   .listing-details p {
     font-size: 16px;
     line-height: 1.6;
-    color: #555;
   }
   
-  /* Section for listing info */
+  /* Information list */
   .listing-info h2 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 10px;
-    color: #333;
   }
   
   .listing-info ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
   }
   
   .listing-info li {
     font-size: 16px;
-    margin-bottom: 8px;
-    color: #555;
+    margin-bottom: 5px;
   }
   
-  .listing-info li strong {
-    color: #333;
-  }
-  
-  /* Footer section with button */
+  /* Footer with contact button */
   .listing-footer {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
   }
   
   .contact-button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
     background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
   .contact-button:hover {
     background-color: #0056b3;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .listing-container {
-      padding: 15px;
-    }
-  
-    .listing-header h1 {
-      font-size: 20px;
-    }
-  
-    .listing-price {
-      font-size: 18px;
-    }
-  
-    .listing-details h2,
-    .listing-info h2 {
-      font-size: 18px;
-    }
-  
-    .listing-details p,
-    .listing-info li {
-      font-size: 14px;
-    }
-  
-    .contact-button {
-      padding: 8px 16px;
-      font-size: 14px;
-    }
   }
   

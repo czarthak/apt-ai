@@ -1,91 +1,108 @@
-.active {
-  background-color: #1d4ed8;
-}
-
-nav {
+/* Navbar Container */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #0f172a;
   color: white;
+  padding: 1rem;
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
-nav .title {
-  font-size: 1.5rem;
-  margin: 1rem;
+/* Home Link */
+.navbar .title {
+  font-size: 1.8rem;
   font-weight: bold;
   text-decoration: none;
   color: white;
+  font-family: 'Roboto Slab', serif; /* Aesthetic font for the title */
 }
 
-nav ul {
-  display: flex;
-}
-
-nav ul li {
-  list-style: none;
-}
-
-nav ul li a {
-  display: block;
-  text-decoration: none;
-  color: white;
-  padding: 0.5rem;
-  margin: 0 0.5rem;
-  border-radius: 0.5rem;
-}
-
-nav ul li a:not(.active):hover {
-  background-color: #172554;
-}
-
-nav .menu {
+/* Menu Icon */
+.navbar .menu {
   display: none;
   position: absolute;
-  top: 0.75rem;
-  right: 0.5rem;
+  top: 1.25rem;
+  right: 1rem;
   flex-direction: column;
   justify-content: space-between;
-  width: 2.25rem;
+  width: 2.5rem;
   height: 2rem;
 }
 
-nav .menu span {
+.navbar .menu span {
   height: 0.4rem;
   width: 100%;
   background-color: #fff;
   border-radius: 0.2rem;
 }
 
+/* Nav Links */
+.navbar ul {
+  display: flex;
+}
+
+.navbar ul li {
+  list-style: none;
+}
+
+.navbar ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 0.7rem 1.5rem; /* Increased padding for a more substantial button */
+  margin: 0 0.5rem;
+  border-radius: 8px; /* Slightly rounded corners for a modern look */
+  background-color: #60a5fa; /* Light blue background */
+  fontFamily: "'Montserrat', sans-serif";
+ /* Aesthetic font for the buttons */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover Effect */
+.navbar ul li a:hover {
+  background-color: #3b82f6; /* Darker blue on hover */
+  color: #f0f9ff; /* Light text on hover */
+}
+
+/* Active Link */
+.navbar ul li a.active {
+  background-color: #2563eb; /* Even darker blue when active */
+  color: white;
+}
+
+/* Responsive Menu */
 @media (max-width: 480px) {
-  nav .menu {
+  .navbar .menu {
     display: flex;
   }
 
-  nav {
+  .navbar {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  nav ul {
+  .navbar ul {
     display: none;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
   }
 
-  nav ul.open {
+  .navbar ul.open {
     display: flex;
   }
 
-  nav ul li {
+  .navbar ul li {
     width: 100%;
     text-align: center;
   }
 
-  nav ul li a {
-    margin: 0.2rem 0.5rem;
+  .navbar ul li a {
+    margin: 0.5rem;
   }
 }

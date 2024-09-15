@@ -8,6 +8,8 @@
     color: #333;
     padding: 20px;
     background-color: #f8f9fa;
+    position: relative;
+    z-index: 1; /* Ensure this is lower than navbar's z-index */
 }
 
 .profile-side {
@@ -24,6 +26,8 @@
     object-fit: cover;
     margin-bottom: 10px;
     border: 3px solid #007bff;
+    position: relative;
+    z-index: 1; /* Ensure this is lower than navbar's z-index */
 }
 
 .initials-circle {
@@ -84,6 +88,17 @@
     animation: fadeInOut 3s forwards;
     /* Animation to fade in and then out */
 }
+
+.success-message {
+    color: green;
+    background-color: #e6ffe6;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
 
 @keyframes fadeInOut {
     0% {
