@@ -13,10 +13,13 @@ public class Apt {
 
     private String description;
 
-    @Id
     @Column(name = "id")
     private String id;
 
+    @Id
+    @Column(name = "db_id")
+    private String db_id;
+   
     public Apt() {
     }
 
