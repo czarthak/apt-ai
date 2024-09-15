@@ -31,12 +31,14 @@ export const Navbar = ({ token }) => {
               <li>
                 <NavLink to="/bot">Chatbot</NavLink>
               </li>
-
             </>
           ) : (
             <>
               <li>
                 <NavLink to="/accountinfo">Profile Information</NavLink>
+              </li>
+              <li>
+                <NavLink to="/searchListings">Listings</NavLink>
               </li>
               {/* <li>
                 <NavLink to="/myorganizations">My Organizations</NavLink>
@@ -48,9 +50,7 @@ export const Navbar = ({ token }) => {
                 <NavLink to="/myrequests">My Requests</NavLink>
               </li> */}
               <li>
-                <NavLink to="/listallorganizations">
-                  Find Roomates
-                </NavLink>
+                <NavLink to="/listallorganizations">Find Roomates</NavLink>
               </li>
               {/* <li>
                 <NavLink to="/allorganizationstatistics">
