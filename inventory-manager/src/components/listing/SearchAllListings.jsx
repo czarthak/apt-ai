@@ -241,7 +241,7 @@ const SearchAllListings = () => {
               <CardActions>
                 <Button
                   size="small"
-                  onClick={() => navigate(`/listing/${listing.db_id}`)}>
+                  onClick={() => navigate(`/listing/${listing.dbid}`)}>
                   View Details
                 </Button>
               </CardActions>
