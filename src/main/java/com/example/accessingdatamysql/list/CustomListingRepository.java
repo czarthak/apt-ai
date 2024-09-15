@@ -176,5 +176,15 @@ public class CustomListingRepository {
         List<Object[]> resultList = query.getResultList();
         return resultList;
     }
+    @Transactional
+    public List<Object[]> getAllUserListings(String email)
+    {
+        String nativeQuery = "SELECT * FROM listing L WHERE L.email = ?1";
+        Query query = entityManager.createNativeQuery(nativeQuery)
+                .setParameter(1, email);
 
+        @SuppressWarnings("unchecked")
+        List<Object[]> resultList = query.getResultList();
+        return resultList;
+    }
 }
