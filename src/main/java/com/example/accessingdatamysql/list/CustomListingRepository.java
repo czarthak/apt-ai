@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 @Repository
 public class CustomListingRepository {
@@ -177,14 +178,28 @@ public class CustomListingRepository {
         return resultList;
     }
     @Transactional
-    public List<Object[]> getAllUserListings(String email)
-    {
-        String nativeQuery = "SELECT * FROM listing L WHERE L.email = ?1";
+    public List<Map<String, Object>> getAllUserListings(String email) {
+        String nativeQuery = "SELECT email, description, people, bathrooms, price, pets, sex, id, dbid FROM listing WHERE email = ?1";
         Query query = entityManager.createNativeQuery(nativeQuery)
                 .setParameter(1, email);
 
         @SuppressWarnings("unchecked")
         List<Object[]> resultList = query.getResultList();
-        return resultList;
+        List<Map<String, Object>> mappedResults = new ArrayList<>();
+
+        for (Object[] result : resultList) {
+            Map<String, Object> listing = new HashMap<>();
+            listing.put("email", result[0]);
+            listing.put("description", result[1]);
+            listing.put("people", result[2]);
+            listing.put("bathrooms", result[3]);
+            listing.put("price", result[4]);
+            listing.put("pets", result[5]);
+            listing.put("sex", result[6]);
+            listing.put("id", result[7]);
+            listing.put("dbid", result[8]);
+            mappedResults.add(listing);
+        }
+        return mappedResults;
     }
 }
