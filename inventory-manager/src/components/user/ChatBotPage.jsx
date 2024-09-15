@@ -9,35 +9,47 @@ function ChatBotPage() {
   const [userInput, setUserInput] = useState('');
   const navigate = useNavigate(); 
 
+  // Function to parse the message and create buttons for IDs between #
   const parseMessageForButtons = (text) => {
-    const regex = /#\s?(\d+(?:\s\d+)*)\s?#/g; 
+    const regex = /#\s?(\d+(?:\s\d+)*)\s?#/g; // Matches # 1 2 3 # format
     const parts = [];
     let lastIndex = 0;
 
-    text.replace(regex, (match, ids, offset) => {
+    // Use matchAll to iterate over all matches
+    const matches = [...text.matchAll(regex)];
 
+    matches.forEach((match) => {
+      const [fullMatch, ids] = match;
+      const offset = match.index;
+
+      // Push the text before the current match
       if (offset > lastIndex) {
-        parts.push(text.substring(lastIndex, offset));
+        parts.push(text.slice(lastIndex, offset));
       }
 
-      const idArray = ids.split(/\s+/); 
-      idArray.forEach((id, index) => {
+      // Split the IDs by space and create buttons for each one
+      const idArray = ids.split(/\s+/);
+      idArray.forEach(id => {
         parts.push(
-          <button
-            key={id + index}
-            onClick={() => navigate(`/listing/${id}`)}
-            className="listing-button"
-          >
-            {`Go to Listing #${id}`}
-          </button>
+          <div key={id} style={{ marginBottom: '10px' }}> {/* Wrap in a div for its own line */}
+            <button
+              onClick={() => navigate(`/listing/${id}`)}
+              className="listing-button"
+              style={{ display: 'block' }}  // Ensure each button takes its own line
+            >
+              {`Go to Listing #${id}`}
+            </button>
+          </div>
         );
       });
 
-      lastIndex = offset + match.length;
+      // Update lastIndex to the end of the current match
+      lastIndex = offset + fullMatch.length;
     });
 
+    // Push any remaining text after the last match
     if (lastIndex < text.length) {
-      parts.push(text.substring(lastIndex));
+      parts.push(text.slice(lastIndex));
     }
 
     return parts;
@@ -48,6 +60,7 @@ function ChatBotPage() {
 
     const newUserMessage = { sender: 'user', text: userInput };
     
+    // Add the user's message to the chat
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
     setUserInput(''); 
 
@@ -59,9 +72,9 @@ function ChatBotPage() {
       });
       const data = await response.json();
 
-      console.log('Bot response:', data.response); 
-
       const botMessage = { sender: 'bot', text: data.response };
+
+      // Add the bot's response to the chat
       setMessages(prevMessages => [...prevMessages, botMessage]);
 
     } catch (error) {

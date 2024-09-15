@@ -66,9 +66,23 @@ CREATE TABLE IF NOT EXISTS listing (
 
 INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id, dbid) 
 VALUES
-('janesmith@example.com', 'bbl drizzy', 19, 2, 50.00, 'NO', 'FEMALE', 'ChIJr0LOfG2VTYgRRiv2A2Hfo9k', 11),
-('alicedoe@example.com', 'banana house', 2, 2, 7500.00, 'NO', 'EITHER', 'ChIJr0LOfG2VTYgRRiv2A2Hfo9k', 12),
-('alex.turner@example.com', 'asdfasdf', 2, 5, 500.00, 'YES', 'MALE', 'ChIJr0LOfG2VTYgRRiv2A2Hfo9k', 13),
-('alicedoe@example.com', 'good very nice house', 2, 2, 1.00, 'NO', 'FEMALE', 'ChIJT6wA1RSVTYgR-jS1Xr6qnbs', 14),
-('david.white@example.com', 'skibidi ohio land', 3, 2, 90.00, 'NO', 'MALE', 'ChIJ3ddNLK3wQIgRPwQBAsPf1EA', 15),
-('mike.jackson@example.com', 'edge bitch', 4, 4, 1000.00, 'NO', 'MALE', 'ChIJadHyQW6VTYgRJDQmIlUC2Ao', 16);
+('bobsmith@example.com', 'Looking for one male roommate, message me @ 5408241234', 1, 1, 701.71, 'YES', 'EITHER', '1', 11),
+('hannahlee@example.com', 'Spacious two bedroom, need a female roommate ASAP! Text 5408245678', 2, 1, 1341.65, 'YES', 'EITHER', '2', 12),
+('georgemiller@example.com', 'Pet-friendly two-bedroom available, call 5408249876', 2, 1, 773.17, 'YES', 'EITHER', '3', 13),
+('frankwhite@example.com', 'One male roommate needed for 2-bedroom apartment. Call 5408245623', 1, 3, 1336.72, 'NO', 'FEMALE', '4', 14),
+('georgemiller@example.com', 'One male roommate needed for 2-bedroom apartment. Call 5408245623', 3, 1, 992.81, 'SERVICE', 'MALE', '5', 15),
+('carlajones@example.com', 'One-bedroom unit available, pet-friendly. Call @ 5408247890', 4, 3, 789.24, 'YES', 'FEMALE', '6', 16),
+('georgemiller@example.com', 'One male roommate needed for 2-bedroom apartment. Call 5408245623', 1, 3, 1484.2, 'SERVICE', 'EITHER', '7', 17),
+('frankwhite@example.com', 'Male roommate needed, call @ 5408248765', 4, 1, 1215.11, 'SERVICE', 'FEMALE', '8', 18),
+('ianjohnson@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 4, 1, 1017.84, 'SERVICE', 'EITHER', '9', 19),
+('carlajones@example.com', 'Looking for 3 female roommates, text me @ 5408242389', 2, 1, 1406.27, 'NO', 'FEMALE', '10', 20),
+('jennifergreen@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 4, 2, 1443.11, 'NO', 'MALE', '11', 21),
+('bobsmith@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 2, 2, 1035.32, 'YES', 'MALE', '12', 22),
+('hannahlee@example.com', 'Looking for a female roommate for a 3-bedroom unit, text 5408243456', 4, 3, 1179.81, 'YES', 'MALE', '13', 23),
+('frankwhite@example.com', 'One male roommate needed for 2-bedroom apartment. Call 5408245623', 3, 3, 687.19, 'YES', 'MALE', '14', 24),
+('bobsmith@example.com', 'Female roommates wanted, contact @ 5408249988', 4, 3, 719.14, 'NO', 'FEMALE', '15', 25),
+('hannahlee@example.com', 'Looking for 3 female roommates, text me @ 5408242389', 4, 1, 942.00, 'SERVICE', 'MALE', '16', 26),
+('bobsmith@example.com', 'One-bedroom unit available, pet-friendly. Call @ 5408247890', 3, 3, 666.40, 'NO', 'FEMALE', '17', 27),
+('alicedoe@example.com', 'Pet-friendly two-bedroom available, call 5408249876', 4, 3, 1394.70, 'SERVICE', 'MALE', '18', 28),
+('emilycarter@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 3, 3, 1301.06, 'NO', 'FEMALE', '19', 29),
+('carlajones@example.com', 'Looking for one male roommate, message me @ 5408241234', 2, 3, 1497.33, 'SERVICE', 'MALE', '20', 30);

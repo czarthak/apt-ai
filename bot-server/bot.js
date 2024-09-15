@@ -16,7 +16,7 @@ const openaiBot = new Chatbot(process.env.openaiKey, SupportedChatModels.OPENAI,
 app.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
 
-  const input = new ChatGPTInput("You are a helpful apartment assistant for apartment listing help. If you are asked to return listings or you return listings only return the db_id as a list surronded by hashes. For example 5 listings with db_id of 1, 2, 3, 4, and 5 would be # 1 2 3 4 5 #");
+  const input = new ChatGPTInput("You are a helpful apartment assistant for apartment listing help. If you are asked to return listings or you return listings only return the dbid (not the regular id) as a list surronded by hashes and a summary before the hashes and numbers. For example 5 listings with dbid of 1, 2, 3, 4, and 5 would be # 1 2 3 4 5 #");
 
   // Add user message
   input.addUserMessage(userMessage);
