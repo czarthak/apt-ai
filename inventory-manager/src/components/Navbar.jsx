@@ -24,6 +24,7 @@ const Navbar = ({ token }) => {
     ? [
         { text: 'Profile', link: '/accountinfo' },
         { text: 'Listings', link: '/searchListings' },
+        { text: 'My Listings', link: '/myListings' },
         { text: 'Find Roommates', link: '/listallorganizations' },
         { text: 'Chatbot', link: '/bot' },
         {
