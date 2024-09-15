@@ -79,12 +79,35 @@ public class Listing {
         NO
     }
 
+    @Enumerated(EnumType.STRING)
+    private pets Pets;
+
     public enum sex
     {
         MALE,
         FEMALE,
         EITHER
     }
+
+    public com.example.accessingdatamysql.list.Listing.pets getPets() {
+        return Pets;
+    }
+
+    public void setPets(com.example.accessingdatamysql.list.Listing.pets pets) {
+        Pets = pets;
+    }
+
+    public com.example.accessingdatamysql.list.Listing.sex getSex() {
+        return Sex;
+    }
+
+    public void setSex(com.example.accessingdatamysql.list.Listing.sex sex) {
+        Sex = sex;
+    }
+
+    @Enumerated(EnumType.STRING)
+    private sex Sex;
+
 
     public Listing() {
     }

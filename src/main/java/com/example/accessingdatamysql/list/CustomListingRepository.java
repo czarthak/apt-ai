@@ -58,5 +58,72 @@ public class CustomListingRepository {
         return updatedRows > 0;
     }
 
+    @Transactional
+    public Object getListing(Integer dbId)
+    {
+        try
+        {
+            String nativeQuery = "SELECT L.email, L.description, L.pets, L.sex, L.price, L.id, L.people, L.bathrooms FROM listing L WHERE L.dbId = :dbId";
+            Query query = entityManager.createNativeQuery(nativeQuery)
+                    .setParameter("dbId", dbId);
+            return query.getSingleResult();
+        }
+        catch (Exception e)
+        {
+            return "Listing Not Found";
+        }
+    }
+
+
+    @Transactional
+    public Object updateListing(Map<String, Object> json)
+    {
+        // Extract parameters from the JSON map
+        Integer people;
+        if (json.get("people") instanceof Integer)
+            people = (Integer) json.get("people");
+        else {
+            people = Integer.parseInt((String)json.get("people"));
+        }
+        Integer dbId;
+        if (json.get("dbId") instanceof Integer)
+            dbId = (Integer) json.get("dbId");
+        else {
+            dbId = Integer.parseInt((String)json.get("dbId"));
+        }
+        Integer bathrooms;
+        if (json.get("bathrooms") instanceof Integer)
+            bathrooms = (Integer) json.get("bathrooms");
+        else {
+            bathrooms = Integer.parseInt((String)json.get("bathrooms"));
+        }
+        Double price;
+        if (json.get("price") instanceof Double)
+            price = (Double) json.get("price");
+        else {
+            price = Double.parseDouble((String)json.get("price"));
+        }
+        String email = (String) json.get("email");
+        String description = (String) json.get("description");
+        String id = (String) json.get("id");
+        String pets = (String) json.get("pets");
+        String sex = (String) json.get("sex");
+        // Use native SQL query with EntityManager to update the listing
+        String nativeQuery = "UPDATE listing SET email = ?1, description = ?2, people = ?3, bathrooms = ?4, price = ?5, pets = ?6, sex = ?7, id =?8 WHERE dbId = ?9";
+        Query query = entityManager.createNativeQuery(nativeQuery)
+                .setParameter(1, email)
+                .setParameter(2, description)
+                .setParameter(3, people)
+                .setParameter(4, bathrooms)
+                .setParameter(5, price)
+                .setParameter(6, pets)
+                .setParameter(7, sex)
+                .setParameter(8, id)
+                .setParameter(9, dbId);
+        int updatedRows = query.executeUpdate();
+        return updatedRows > 0;
+    }
+
+
 
 }

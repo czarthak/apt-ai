@@ -57,8 +57,30 @@ public class ListingController {
         }
         response.put("result", "success");
         response.put("data", ListingRepository.findById((Integer.parseInt((String)json.get("dbId")))));
+//        response.put("data", customListingRepository.getListing((Integer.parseInt((String)json.get("dbId")))));
         return response;
     }
 
+    @PostMapping(path="/onelisting/modify")
+    public @ResponseBody Map<String, Object> updateListing(@RequestBody Map<String, Object> json)
+    {
+        Map<String, Object> response = new HashMap<>();
+        if (!json.containsKey("dbId"))
+        {
+            response.put("result", "failure - bad request");
+            return response;
+        }
+        try
+        {
+            customListingRepository.updateListing(json);
+            response.put("result", "success");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Something went wrong, Exception: " + e);
+            response.put("result", "failure");
+        }
+        return response;
+    }
 
 }
