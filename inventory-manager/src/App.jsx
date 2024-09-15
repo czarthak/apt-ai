@@ -2,6 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Home } from "./components/Home";
+import { ChatBotPage } from "./components/user/index";
 import PersonalityTest from "./components/user/PersonalityTest";
 import {
   DeleteUser,
@@ -18,6 +19,7 @@ import AccountInformation from "./components/user/AccountInformation";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import NotFound from "./components/error/NotFound";
 import Dashboard2 from "./components/map/Dashboard";
+import { SearchAllListings } from "./components/listing/SearchAllListings";
 
 function App() {
   const { token, setToken } = useToken();
@@ -32,17 +34,27 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register />} />
-        {/* For the personality test */}
+        <Route path="/bot" element={<ChatBotPage />} />
         <Route element={<PrivateRoutes token={token} />}>
-          <Route path="/dashboard/:userEmail" element={<Dashboard2 token={token} />} />
+          <Route
+            path="/dashboard/:userEmail"
+            element={<Dashboard2 token={token} />}
+          />
           <Route path="/personality-test" element={<PersonalityTest />} />
-          <Route path="/accountinfo" element={<AccountInformation token={token} />} />
+          <Route
+            path="/accountinfo"
+            element={<AccountInformation token={token} />}
+          />
+          <Route path="/searchListings" element={<SearchAllListings />} />
         </Route>
         <Route path="*" element={<NotFound />} />
         <Route path="/404" element={<NotFound />} />
         {/*<Route path="/organizations/:orgId" element={<OrganizationDetails token={token}/>}>*/}
         {/*</Route>*/}
-        <Route path="/listallorganizations" element={<ListAllOrganizations />} />
+        <Route
+          path="/listallorganizations"
+          element={<ListAllOrganizations />}
+        />
       </Routes>
     </div>
   );
