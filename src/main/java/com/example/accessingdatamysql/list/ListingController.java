@@ -101,6 +101,7 @@ public class ListingController {
         }
         try
         {
+            json.put("email", res.get("user"));
             customListingRepository.deleteListing(json);
             response.put("result", "success");
         }
