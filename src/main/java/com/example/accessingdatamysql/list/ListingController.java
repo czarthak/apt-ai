@@ -111,4 +111,24 @@ public class ListingController {
         }
         return response;
     }
+
+    @PostMapping(path="/all")
+    public @ResponseBody Map<String, Object> getItems()
+    {
+        Map<String, Object> response = new HashMap<>();
+        try
+        {
+            response.put("data", customListingRepository.getAllListings());
+            response.put("result", "success");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Could not delete, probably cause it does not exist or you aren't the owner Exception: " + e);
+            response.put("result", "failure");
+        }
+        return response;
+    }
+
+
+
 }
