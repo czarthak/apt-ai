@@ -39,18 +39,33 @@ CREATE TABLE IF NOT EXISTS apt (
   email VARCHAR(128) NOT NULL,
   description VARCHAR(512),
   id VARCHAR(256) NOT NULL,
-  PRIMARY KEY (id),
+  db_id INT AUTO_INCREMENT NOT NULL,
+  PRIMARY KEY (db_id),
   CONSTRAINT fk_user_apt FOREIGN KEY (email) REFERENCES user (email)
 );
+
 INSERT INTO apt(email, description, id) VALUES
 ('alicedoe@example.com', 'Collegiate Suites & Hunters Ridge, Henry Lane, Blacksburg, VA, USA', 'ChIJWf94jHyVTYgR0piad-XCMWw'),
 ('alicedoe@example.com', 'The Edge Apartment Homes, Edge Way, Blacksburg, VA, USA', 'ChIJfTLXfW6VTYgRFpbHGhO5yDE'),
 ('janesmith@example.com', 'West Ambler Johnston Hall, Washington Street Southwest, Blacksburg, VA, USA', 'ChIJudcIPgyVTYgRwuFWL1hEYdM'),
 ('johnsmith@example.com', 'Alight Blacksburg, Patrick Henry Drive, Blacksburg, VA, USA', 'ChIJn0P0cmSVTYgR5C5kZoj5N7U');
 
+CREATE TABLE IF NOT EXISTS listing (
+  email VARCHAR(128) NOT NULL,
+  description VARCHAR(1024),
+  people INT,
+  bathrooms INT,
+  price DECIMAL(10,2),
+  pets ENUM('YES', 'SERVICE', 'NO') NOT NULL,
+  sex ENUM('MALE', 'FEMALE', 'EITHER'),
+  id VARCHAR(256) NOT NULL,
+  db_id INT AUTO_INCREMENT NOT NULL,
+  PRIMARY KEY (db_id),
+  CONSTRAINT fk_user_listing FOREIGN KEY (email) REFERENCES user (email)
+);
 
-
-
+INSERT INTO listing(email, description, people, bathrooms, price, pets, sex, id) VALUES
+('alicedoe@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 2, 2, 800, 'YES', 'FEMALE', 'ChIJn0P0cmSVTYgR5C5kZoj5N7U');
 
 
 
