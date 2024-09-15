@@ -64,9 +64,16 @@ CREATE TABLE IF NOT EXISTS listing (
   CONSTRAINT fk_user_listing FOREIGN KEY (email) REFERENCES user (email)
 );
 
-INSERT INTO listing(email, description, people, bathrooms, price, pets, sex, id) VALUES
-('alicedoe@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 2, 2, 800, 'YES', 'FEMALE', 'ChIJn0P0cmSVTYgR5C5kZoj5N7U');
-
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('alex.turner@example.com ', 'Looking for one male roommate, message me @ 5408241234', 1, 1, 701.71, 'YES', 'EITHER', '39daf856-1bfa-4167-bddd-33fa753d6aa5');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('alicedoe@example.com', 'Spacious two bedroom, need a female roommate ASAP! Text 5408245678', 2, 1, 1341.65, 'YES', 'EITHER', '2372a5eb-d9b5-48ad-a3cf-42b973a87092');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('david.white@example.com', 'Pet-friendly two-bedroom available, call 5408249876', 2, 1, 773.17, 'YES', 'EITHER', '8fd04a1d-4fc6-4077-879d-503961f8a866');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('emily.jones@example.com', 'One male roommate needed for 2-bedroom apartment. Call 5408245623', 1, 3, 1336.72, 'NO', 'FEMALE', 'a50bc81c-4325-42f9-9ab5-df7de707622c');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('janesmith@example.com', 'One male roommate needed for 2-bedroom apartment. Call 5408245623', 3, 1, 992.81, 'SERVICE', 'MALE', 'e509fb4c-b8e3-4148-a926-b8f163b9381c');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('john.doe@example.com', 'One-bedroom unit available, pet-friendly. Call @ 5408247890', 4, 3, 789.24, 'YES', 'FEMALE', '783f6649-96a2-4fab-a189-9373e62d49c0');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('johnsmith@example.com', 'One male roommate needed for 2-bedroom apartment. Call 5408245623', 1, 3, 1484.2, 'SERVICE', 'EITHER', '80fd4b27-95d3-4724-a958-629de29d8cd7');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('mike.jackson@example.com', 'Male roommate needed, call @ 5408248765', 4, 1, 1215.11, 'SERVICE', 'FEMALE', 'fd377e2b-0271-45ce-9236-7591cb787586');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('olivia.wilson@example.com', 'Two girls looking for two girl roommates, text us @ 5408248782', 4, 1, 1017.84, 'SERVICE', 'EITHER', '98e0a89f-1850-4a34-b447-faf84db8c37c');
+INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) VALUES ('sara.miller@example.com', 'Looking for 3 female roommates, text me @ 5408242389', 2, 1, 1406.27, 'NO', 'FEMALE', 'bb290089-2ce1-491e-8cd8-4d074ad0929a');
 
 
 
