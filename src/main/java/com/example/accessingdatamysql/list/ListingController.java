@@ -83,4 +83,31 @@ public class ListingController {
         return response;
     }
 
+    @PostMapping(path="/onelisting/delete")
+    public @ResponseBody Map<String, Object> deleteListing(@RequestBody Map<String, Object> json)
+    {
+        Map<String, Object> response = new HashMap<>();
+        if (!json.containsKey("jwt"))
+        {
+            response.put("result", "failed = bad request");
+        }
+        AuthController au = new AuthController();
+        Map<String, String> res = au.verify(json); // if the jwt token could not be verified
+        if (res.containsKey("login") && res.get("login").equals("failed"))
+        {
+            response.put("result", "failed = bad token");
+            return response;
+        }
+        try
+        {
+            customListingRepository.deleteListing(json);
+            response.put("result", "success");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Could not delete, probably cause it does not exist or you aren't the owner Exception: " + e);
+            response.put("result", "failure");
+        }
+        return response;
+    }
 }

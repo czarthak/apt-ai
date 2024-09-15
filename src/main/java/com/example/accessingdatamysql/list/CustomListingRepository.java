@@ -124,6 +124,24 @@ public class CustomListingRepository {
         return updatedRows > 0;
     }
 
+    @Transactional
+    public Object deleteListing(Map<String, Object> json)
+    {
 
+        Integer dbId;
+        if (json.get("dbId") instanceof Integer)
+            dbId = (Integer) json.get("dbId");
+        else {
+            dbId = Integer.parseInt((String)json.get("dbId"));
+        }
+        String email = (String) json.get("email");
+        // Use native SQL query with EntityManager to update the listing
+        String nativeQuery = "DELETE FROM listing L WHERE L.email = ?1 AND L.dbId = ?2";
+        Query query = entityManager.createNativeQuery(nativeQuery)
+                .setParameter(1, email)
+                .setParameter(2, dbId);
+        int updatedRows = query.executeUpdate();
+        return updatedRows > 0;
+    }
 
 }
