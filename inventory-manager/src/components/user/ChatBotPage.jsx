@@ -1,21 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import './ChatBotPage.css'; 
 
 function ChatBotPage() {
-  // Start with a welcome message
   const [messages, setMessages] = useState([
-    { sender: 'bot', text: 'Hello! Welcome to the chatbot. How can I assist you today?' }
+    { sender: 'bot', text: 'Welcome to the Apartment AI Assistant! Type a question to get started!' }
   ]);
   const [userInput, setUserInput] = useState('');
+  const navigate = useNavigate(); 
+
+  const parseMessageForButtons = (text) => {
+    const regex = /#\s?(\d+(?:\s\d+)*)\s?#/g; 
+    const parts = [];
+    let lastIndex = 0;
+
+    text.replace(regex, (match, ids, offset) => {
+
+      if (offset > lastIndex) {
+        parts.push(text.substring(lastIndex, offset));
+      }
+
+      const idArray = ids.split(/\s+/); 
+      idArray.forEach((id, index) => {
+        parts.push(
+          <button
+            key={id + index}
+            onClick={() => navigate(`/listing/${id}`)}
+            className="listing-button"
+          >
+            {`Go to Listing #${id}`}
+          </button>
+        );
+      });
+
+      lastIndex = offset + match.length;
+    });
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts;
+  };
 
   const sendMessage = async () => {
     if (userInput.trim() === '') return;
 
     const newUserMessage = { sender: 'user', text: userInput };
     
-    // Immediately update the state with the user's message and clear the input field
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
-    setUserInput(''); // Clear the input field right after sending the message
+    setUserInput(''); 
 
     try {
       const response = await fetch('http://localhost:1000/chat', {
@@ -25,22 +59,24 @@ function ChatBotPage() {
       });
       const data = await response.json();
 
-      // Only append the bot's response to the messages
+      console.log('Bot response:', data.response); 
+
       const botMessage = { sender: 'bot', text: data.response };
       setMessages(prevMessages => [...prevMessages, botMessage]);
 
     } catch (error) {
       console.error('Error sending message:', error);
     }
-};
-
+  };
 
   return (
     <div className="chat-container">
       <div className="chat-box">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.sender}`}>
-            <span className="message-text">{message.text}</span>
+            <span className="message-text">
+              {message.sender === 'bot' ? parseMessageForButtons(message.text) : message.text}
+            </span>
           </div>
         ))}
       </div>
