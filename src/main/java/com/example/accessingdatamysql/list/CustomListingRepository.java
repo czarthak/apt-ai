@@ -167,4 +167,14 @@ public class CustomListingRepository {
         return updatedRows > 0;
     }
 
+    @Transactional
+    public List<Object[]> getAllListings()
+    {
+        String nativeQuery = "SELECT * FROM listing";
+        Query query = entityManager.createNativeQuery(nativeQuery);
+        @SuppressWarnings("unchecked")
+        List<Object[]> resultList = query.getResultList();
+        return resultList;
+    }
+
 }
