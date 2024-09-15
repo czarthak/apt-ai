@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS listing (
   pets ENUM('YES', 'SERVICE', 'NO') NOT NULL,
   sex ENUM('MALE', 'FEMALE', 'EITHER'),
   id VARCHAR(256) NOT NULL,
-  db_id INT AUTO_INCREMENT NOT NULL,
-  PRIMARY KEY (db_id),
+  dbid INT AUTO_INCREMENT,
+  PRIMARY KEY (dbid),
   CONSTRAINT fk_user_listing FOREIGN KEY (email) REFERENCES user (email)
 );
 
