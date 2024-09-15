@@ -1,9 +1,9 @@
 {
-  "short_name": "Roomie Search",
-  "name": "Roomie_Search",
+  "short_name": "House Inc",
+  "name": "House_Inc",
   "icons": [
     {
-      "src": "room_search.ico",
+      "src": "house.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
