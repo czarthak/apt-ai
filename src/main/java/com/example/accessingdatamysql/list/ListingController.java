@@ -112,13 +112,13 @@ public class ListingController {
         return response;
     }
 
-    @PostMapping(path="/all")
+    @GetMapping(path="/all")
     public @ResponseBody Map<String, Object> getItems()
     {
         Map<String, Object> response = new HashMap<>();
         try
         {
-            response.put("data", customListingRepository.getAllListings());
+            response.put("data", ListingRepository.findAll());
             response.put("result", "success");
         }
         catch (Exception e)
