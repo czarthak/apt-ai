@@ -29,11 +29,9 @@ VALUES
     ('david.white@example.com', 'White', 'David', 'davidpass', '333-222-1111', 'Senior', 'Computer Science', 'Designing machines that make a difference in the world.', 2000.00, 'INTJ'),
     ('sara.miller@example.com', 'Miller', 'Sara', 'sara456', '111-999-8888', 'Junior', 'Business', 'Appreciating the beauty of art from different eras and cultures.', 1500.00, 'ENTJ'),
     ('alex.turner@example.com', 'Turner', 'Alex', 'alexpass', '666-777-8888', 'Sophomore', 'Electrical', 'Passionate about social justice and international relations.', 600.00, 'EJFG'),
-    ('olivia.wilson@example.com', 'Wilson', 'Olivia', 'olivia123', '888-999-0000', 'Junior', 'Business', 'Effective communication is the key to success.', 600.00, 'ENTP');
-
-INSERT INTO user (email, lname, fname, password, phone_number, year, major, bio, budget, personal_trait) VALUES
-('alicedoe@example.com', 'Doe', 'Alice', 'securepass', '987-654-3210', 'junior', 'Chemistry', 'Hi Im alice', '900', 'ENTP'),
-('johnsmith@example.com', 'Smith', 'John', 'password123', '123-456-7890', 'freshman', 'Computer Science', 'Hi my name is John', '800.0', 'EJFG');
+    ('olivia.wilson@example.com', 'Wilson', 'Olivia', 'olivia123', '888-999-0000', 'Junior', 'Business', 'Effective communication is the key to success.', 600.00, 'ENTP'),
+	('alicedoe@example.com', 'Doe', 'Alice', 'securepass', '987-654-3210', 'junior', 'Chemistry', 'Hi Im alice', '900', 'ENTP'),
+	('johnsmith@example.com', 'Smith', 'John', 'password123', '123-456-7890', 'freshman', 'Computer Science', 'Hi my name is John', '800.0', 'EJFG');
 
 CREATE TABLE IF NOT EXISTS apt (
   email VARCHAR(128) NOT NULL,
@@ -71,4 +69,13 @@ VALUES
 ('alex.turner@example.com', 'asdfasdf', 2, 5, 500.00, 'YES', 'MALE', 'ChIJr0LOfG2VTYgRRiv2A2Hfo9k', 13),
 ('alicedoe@example.com', 'good very nice house', 2, 2, 1.00, 'NO', 'FEMALE', 'ChIJT6wA1RSVTYgR-jS1Xr6qnbs', 14),
 ('david.white@example.com', 'skibidi ohio land', 3, 2, 90.00, 'NO', 'MALE', 'ChIJ3ddNLK3wQIgRPwQBAsPf1EA', 15),
-('mike.jackson@example.com', 'edge bitch', 4, 4, 1000.00, 'NO', 'MALE', 'ChIJadHyQW6VTYgRJDQmIlUC2Ao', 16);
+('mike.jackson@example.com', 'edge bitch', 4, 4, 1000.00, 'NO', 'MALE', 'ChIJadHyQW6VTYgRJDQmIlUC2Ao', 16),
+('olivia.wilson@example.com', 'cozy cabin in the woods', 4, 2, 850.00, 'NO', 'EITHER', 'ChIJ8aBtoavqTYgRxHZVBDg8-IA', 23),
+('olivia.wilson@example.com', 'suburban home with large yard', 4, 2, 1000.00, 'NO', 'EITHER', 'ChIJ6bAclDK-TYgRwALSJRjm5Mw', 24),
+('john.doe@example.com', 'modern loft with city view', 2, 1, 1200.00, 'YES', 'MALE', 'ChIJkcaodqWVTYgRR8S_npnkuR0', 17),
+('janesmith@example.com', 'spacious apartment in downtown', 3, 2, 1600.00, 'YES', 'FEMALE', 'ChIJs0lcfJWVTYgRgQ_iUKPT_Rw', 18),
+('mike.jackson@example.com', 'cozy cottage with garden', 4, 3, 2200.00, 'YES', 'FEMALE', 'ChIJh3AmlQyVTYgRDeWTUK2CWhc', 19),
+('sara.miller@example.com', 'charming penthouse with balcony', 1, 1, 2500.00, 'NO', 'MALE', 'ChIJiUPlZQyVTYgRsVVMFOYY_es', 20),
+('emily.jones@example.com', 'suburban home with large yard', 4, 2, 1800.00, 'YES', 'FEMALE', 'ChIJJyztKd-2t4kRL1MTwPjQg68', 21),
+('janesmith@example.com', 'luxurious apartment with gym access', 2, 2, 2100.00, 'NO', 'MALE', 'ChIJ3ddNLK3wQIgRPwQBAsPf1EA', 22);
+
