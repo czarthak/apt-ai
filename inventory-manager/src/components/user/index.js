@@ -4,3 +4,4 @@ export * from "./DeleteUser";
 export * from "./UpdatePassword";
 export * from "./ListAllOrganizations";
 export { default as ChatBotPage } from './ChatBotPage';
+export { default as ListingDetails } from './ListingDetails';
