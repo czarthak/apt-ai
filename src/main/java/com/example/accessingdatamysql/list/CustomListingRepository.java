@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 @Repository
 public class CustomListingRepository {
@@ -16,32 +17,32 @@ public class CustomListingRepository {
     private EntityManager entityManager;
 
     @Transactional
-    public Object createListing(Map<String, Object> json)
-    {
+    public Map<String, Object> createListing(Map<String, Object> json) {
         // Extract parameters from the JSON map
         Integer people;
         if (json.get("people") instanceof Integer)
             people = (Integer) json.get("people");
         else {
-            people = Integer.parseInt((String)json.get("people"));
+            people = Integer.parseInt((String) json.get("people"));
         }
         Integer bathrooms;
         if (json.get("bathrooms") instanceof Integer)
             bathrooms = (Integer) json.get("bathrooms");
         else {
-            bathrooms = Integer.parseInt((String)json.get("bathrooms"));
+            bathrooms = Integer.parseInt((String) json.get("bathrooms"));
         }
         Double price;
         if (json.get("price") instanceof Double)
             price = (Double) json.get("price");
         else {
-            price = Double.parseDouble((String)json.get("price"));
+            price = Double.parseDouble((String) json.get("price"));
         }
         String email = (String) json.get("email");
         String description = (String) json.get("description");
         String id = (String) json.get("id");
         String pets = (String) json.get("pets");
         String sex = (String) json.get("sex");
+
         // Use native SQL query with EntityManager to create a new listing
         String nativeQuery = "INSERT INTO listing (email, description, people, bathrooms, price, pets, sex, id) " +
                 "VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)";
@@ -54,8 +55,30 @@ public class CustomListingRepository {
                 .setParameter(6, pets)
                 .setParameter(7, sex)
                 .setParameter(8, id);
-        int updatedRows = query.executeUpdate();
-        return updatedRows > 0;
+        query.executeUpdate();
+
+        // Retrieve the primary key of the last inserted row
+        Query lastInsertIdQuery = entityManager.createNativeQuery("SELECT LAST_INSERT_ID()");
+        Integer newDbId = ((Number) lastInsertIdQuery.getSingleResult()).intValue();
+
+        // Fetch the newly created listing
+        Query fetchQuery = entityManager.createNativeQuery("SELECT email, description, people, bathrooms, price, pets, sex, id, dbid FROM listing WHERE dbid = ?1")
+                .setParameter(1, newDbId);
+        Object[] result = (Object[]) fetchQuery.getSingleResult();
+
+        // Map the result to a Map<String, Object>
+        Map<String, Object> listing = new HashMap<>();
+        listing.put("email", result[0]);
+        listing.put("description", result[1]);
+        listing.put("people", result[2]);
+        listing.put("bathrooms", result[3]);
+        listing.put("price", result[4]);
+        listing.put("pets", result[5]);
+        listing.put("sex", result[6]);
+        listing.put("id", result[7]);
+        listing.put("dbid", result[8]);
+
+        return listing;
     }
 
     @Transactional

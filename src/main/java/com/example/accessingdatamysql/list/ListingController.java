@@ -35,7 +35,8 @@ public class ListingController {
         }
         try
         {
-            customListingRepository.createListing(json);
+            // customListingRepository.createListing(json);
+            response.put("data", customListingRepository.createListing(json));
             response.put("result", "success");
         }
         catch (Exception e)
