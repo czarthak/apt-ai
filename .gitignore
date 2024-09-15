@@ -36,3 +36,5 @@ src/main/resources/application.properties
 src/main/resources/application.properties
 /replay_pid31936.log
 /hs_err_pid31936.log
+
+bot-server/.env

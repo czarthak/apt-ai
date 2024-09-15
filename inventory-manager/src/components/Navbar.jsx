@@ -28,6 +28,10 @@ export const Navbar = ({ token }) => {
               <li>
                 <NavLink to="/register">Register</NavLink>
               </li>
+              <li>
+                <NavLink to="/bot">Chatbot</NavLink>
+              </li>
+
             </>
           ) : (
             <>
