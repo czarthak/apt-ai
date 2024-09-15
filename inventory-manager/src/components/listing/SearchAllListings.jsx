@@ -91,10 +91,38 @@ const SearchAllListings = () => {
   const [listings, setListings] = useState([]);
 
   useEffect(() => {
+    const getAddressFromPlaceId = async (placeId) => {
+      const apiKey = "AIzaSyB5XqqsxtwR_QCPE8nNwXuAg8EU2EwsoiA"; // Replace with your API key
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&key=${apiKey}`;
+
+      try {
+        const response = await Axios.get(url);
+        if (response.data.status === "OK") {
+          const address = response.data.results[0].formatted_address;
+          return address;
+        } else {
+          throw new Error("Geocoding failed");
+        }
+      } catch (error) {
+        console.error("Error fetching address:", error);
+        return null;
+      }
+    };
+
     const fetchListings = async () => {
       try {
         const response = await Axios.get("http://localhost:8080/listing/all");
-        setListings(response.data.data);
+        const listingsData = response.data.data;
+
+        // Fetch addresses for each listing
+        const updatedListings = await Promise.all(
+          listingsData.map(async (listing) => {
+            const address = await getAddressFromPlaceId(listing.id);
+            return { ...listing, address };
+          })
+        );
+        // console.log(updatedListings);
+        setListings(updatedListings);
       } catch (error) {
         console.error("Error fetching listings:", error);
       }
@@ -216,7 +244,7 @@ const SearchAllListings = () => {
               }}>
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Listing {listing.id}
+                  {listing.address}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   Email: {listing.email}
