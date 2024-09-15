@@ -16,12 +16,12 @@ public class Listing {
     @Column(name = "id")
     private String id;
 
-    public String getDb_id() {
-        return db_id;
+    public Integer getDbid() {
+        return dbid;
     }
 
-    public void setDb_id(String db_id) {
-        this.db_id = db_id;
+    public void setDbid(Integer dbid) {
+        this.dbid = dbid;
     }
 
     public Integer getPeople() {
@@ -48,19 +48,20 @@ public class Listing {
         this.price = price;
     }
 
-    public Listing(String email, String description, String id, String db_id, Integer people, Integer bathrooms, Double price) {
+    public Listing(String email, String description, String id, Integer dbid, Integer people, Integer bathrooms, Double price) {
         this.email = email;
         this.description = description;
         this.id = id;
-        this.db_id = db_id;
+        this.dbid = dbid;
         this.people = people;
         this.bathrooms = bathrooms;
         this.price = price;
     }
 
     @Id
-    @Column(name = "db_id")
-    private String db_id;
+    @Column(name = "dbid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer dbid;
    
     @Column(name = "people")
     private Integer people;
@@ -85,7 +86,8 @@ public class Listing {
         EITHER
     }
 
-
+    public Listing() {
+    }
 
 
     public String getEmail() {

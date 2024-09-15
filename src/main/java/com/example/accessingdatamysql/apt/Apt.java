@@ -18,7 +18,8 @@ public class Apt {
 
     @Id
     @Column(name = "db_id")
-    private String db_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer db_id;
    
     public Apt() {
     }
