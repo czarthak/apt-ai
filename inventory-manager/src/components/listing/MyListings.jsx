@@ -201,8 +201,24 @@ const MyListings = ({ token }) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, p: 2 }}>
-      <Box sx={{ mb: 4 }}>
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "1fr 2fr 1fr",
+        gridTemplateRows: "1fr 1fr",
+        gap: 2,
+        p: 2,
+        height: "100vh",
+      }}>
+      {/* Form Control */}
+      <Box
+        sx={{
+          gridColumn: "1 / 2",
+          gridRow: "1 / 3",
+          p: 2,
+          overflowY: "auto",
+          maxWidth: "100%",
+        }}>
         <Typography variant="h4" gutterBottom>
           Create a Listing
         </Typography>
@@ -293,68 +309,72 @@ const MyListings = ({ token }) => {
         </Box>
       </Box>
 
-      <Typography variant="h4" gutterBottom>
-        Your Listings
-      </Typography>
-      <Grid container spacing={2}>
-        {userListings.map((listing) => (
-          <Grid item xs={12} sm={6} md={4} key={listing.id}>
-            <Card
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                p: 2,
-              }}>
-              <CardContent>
-                <Typography variant="h6" component="div">
-                  {listing.address}
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  Email: {listing.email}
-                </Typography>
-                <Typography variant="body2">
-                  Description:{" "}
-                  {listing.description || "No description provided"}
-                </Typography>
-                <Typography variant="body2">
-                  People: {listing.people || "N/A"}
-                </Typography>
-                <Typography variant="body2">
-                  Bathrooms: {listing.bathrooms || "N/A"}
-                </Typography>
-                <Typography variant="body2">
-                  Price: ${listing.price || "N/A"}
-                </Typography>
-                <Typography variant="body2">
-                  Pets Allowed: {listing.pets || "N/A"}
-                </Typography>
-                <Typography variant="body2">
-                  Gender Preference: {listing.sex || "N/A"}
-                </Typography>
-              </CardContent>
-              <CardActions
+      {/* Grid Container for Listings */}
+      <Box
+        sx={{ gridColumn: "2 / 4", gridRow: "1 / 3", p: 2, overflowY: "auto" }}>
+        <Typography variant="h4" gutterBottom>
+          Your Listings
+        </Typography>
+        <Grid container spacing={2}>
+          {userListings.map((listing) => (
+            <Grid item xs={12} sm={6} md={4} key={listing.id}>
+              <Card
                 sx={{
-                  width: "100%", // Makes the CardActions span the full width of the card
-                  justifyContent: "space-between", // Ensures buttons are spaced apart
-                  p: 1, // Adds some padding to the buttons for spacing
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  p: 2,
                 }}>
-                <Button
-                  size="small"
-                  onClick={() => navigate(`/listing/${listing.dbid}`)}>
-                  View Details
-                </Button>
-                <Button
-                  size="small"
-                  color="error"
-                  onClick={() => handleDeleteListing(listing.dbid)}>
-                  Delete
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+                <CardContent>
+                  <Typography variant="h6" component="div">
+                    {listing.address}
+                  </Typography>
+                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    Email: {listing.email}
+                  </Typography>
+                  <Typography variant="body2">
+                    Description:{" "}
+                    {listing.description || "No description provided"}
+                  </Typography>
+                  <Typography variant="body2">
+                    People: {listing.people || "N/A"}
+                  </Typography>
+                  <Typography variant="body2">
+                    Bathrooms: {listing.bathrooms || "N/A"}
+                  </Typography>
+                  <Typography variant="body2">
+                    Price: ${listing.price || "N/A"}
+                  </Typography>
+                  <Typography variant="body2">
+                    Pets Allowed: {listing.pets || "N/A"}
+                  </Typography>
+                  <Typography variant="body2">
+                    Gender Preference: {listing.sex || "N/A"}
+                  </Typography>
+                </CardContent>
+                <CardActions
+                  sx={{
+                    width: "100%", // Makes the CardActions span the full width of the card
+                    justifyContent: "space-between", // Ensures buttons are spaced apart
+                    p: 1, // Adds some padding to the buttons for spacing
+                  }}>
+                  <Button
+                    size="small"
+                    onClick={() => navigate(`/listing/${listing.dbid}`)}>
+                    View Details
+                  </Button>
+                  <Button
+                    size="small"
+                    color="error"
+                    onClick={() => handleDeleteListing(listing.dbid)}>
+                    Delete
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </Box>
   );
 };
