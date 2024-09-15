@@ -1,0 +1,103 @@
+/* Container for the chat interface */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* Full screen height */
+    width: 100vw; /* Full screen width */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9;
+}
+
+/* Chat box that contains the messages */
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Each individual message */
+.message {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+/* User message aligned to the right */
+.message.user {
+    justify-content: flex-end;
+}
+
+/* Bot message aligned to the left */
+.message.bot {
+    justify-content: flex-start;
+}
+
+/* Message text styled like a bubble */
+.message-text {
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.message.user .message-text {
+    background-color: #dcf8c6;
+    color: #000;
+    border-bottom-right-radius: 0;
+}
+
+.message.bot .message-text {
+    background-color: #ececec;
+    color: #000;
+    border-bottom-left-radius: 0;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.send-button {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+
+/* Ensure the chat box scrolls correctly */
+.chat-box {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.chat-box::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}

@@ -2,6 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Home } from "./components/Home";
+import { ChatBotPage } from './components/user/index';
 import PersonalityTest from "./components/user/PersonalityTest";
 import {
   DeleteUser,
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/bot" element={<ChatBotPage/>}/>
         {/* For the personality test */}
         <Route element={<PrivateRoutes token={token} />}>
           <Route path="/dashboard/:userEmail" element={<Dashboard2 token={token} />} />
