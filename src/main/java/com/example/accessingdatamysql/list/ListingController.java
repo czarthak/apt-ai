@@ -101,6 +101,7 @@ public class ListingController {
         }
         try
         {
+            json.put("email", res.get("user"));
             customListingRepository.deleteListing(json);
             response.put("result", "success");
         }
@@ -135,8 +136,14 @@ public class ListingController {
         Map<String, Object> response = new HashMap<>();
         if (!json.containsKey("email"))
         {
-            response.put("result", "failure - bad request");
-            return response;
+            if (!json.containsKey("jwt"))
+            {
+                response.put("result", "failure - bad request");
+                return response;
+            }
+            AuthController au = new AuthController();
+            Map<String, String> res = au.verify(json); // if the jwt token could not be verified
+            json.put("email", res.get("user"));
         }
         try
         {
