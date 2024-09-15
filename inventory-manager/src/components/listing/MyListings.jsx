@@ -54,13 +54,13 @@ const MyListings = ({ token }) => {
     const fetchUserListings = async () => {
       try {
         const response = await Axios.post(
-          "http://localhost:8080/listing/my-listings",
+          "http://localhost:8080/listing/user/all",
           {
             jwt: token.jwt,
           }
         );
         if (response.data.result === "success") {
-          setUserListings(response.data.listings || []); // Ensure it's an array
+          setUserListings(response.data.data || []); // Ensure it's an array
         } else {
           console.error("Error fetching listings:", response.data);
         }
@@ -114,7 +114,7 @@ const MyListings = ({ token }) => {
       if (response.data.result === "success") {
         setUserListings((prevListings) => [
           ...prevListings,
-          response.data.listing || {}, // Ensure listing is not undefined
+          response.data.data || {}, // Ensure listing is not undefined
         ]);
       } else {
         console.error("Error creating listing:", response.data);
@@ -127,10 +127,15 @@ const MyListings = ({ token }) => {
   // Delete listing function
   const handleDeleteListing = async (id) => {
     try {
-      await Axios.delete(`http://localhost:8080/listing/${id}`);
+      const requestBody = { dbId: id, jwt: token.jwt };
+      console.log(requestBody);
+      await Axios.post(
+        `http://localhost:8080/listing/onelisting/delete`,
+        requestBody
+      );
       // After successfully deleting, remove the listing from the UI
       setUserListings((userListings) =>
-        userListings.filter((listing) => listing.db_id !== id)
+        userListings.filter((listing) => listing.dbid !== id)
       );
     } catch (error) {
       console.error("Error deleting listing:", error);
@@ -286,13 +291,13 @@ const MyListings = ({ token }) => {
                 }}>
                 <Button
                   size="small"
-                  onClick={() => navigate(`/listing/${listing.db_id}`)}>
+                  onClick={() => navigate(`/listing/${listing.dbid}`)}>
                   View Details
                 </Button>
                 <Button
                   size="small"
                   color="error"
-                  onClick={() => handleDeleteListing(listing.db_id)}>
+                  onClick={() => handleDeleteListing(listing.dbid)}>
                   Delete
                 </Button>
               </CardActions>
