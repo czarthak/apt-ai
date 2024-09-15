@@ -28,12 +28,14 @@ export const Navbar = ({ token }) => {
               <li>
                 <NavLink to="/register">Register</NavLink>
               </li>
-
             </>
           ) : (
             <>
               <li>
                 <NavLink to="/accountinfo">Profile Information</NavLink>
+              </li>
+              <li>
+                <NavLink to="/myListings">My Listings</NavLink>
               </li>
               <li>
                 <NavLink to="/searchListings">Listings</NavLink>
