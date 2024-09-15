@@ -1,18 +1,26 @@
-import './Register.css'
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Axios from "axios";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Axios from 'axios';
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Box,
+} from '@mui/material';
+import backgroundImage from '../../images/pic4.jpg';
 
 export const Register = (props) => {
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [pass, setPass] = useState("");
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [pass, setPass] = useState('');
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:8080/user/add", {
+    Axios.post('http://localhost:8080/user/add', {
       email: email,
       lname: lname,
       fname: fname,
@@ -25,69 +33,108 @@ export const Register = (props) => {
   };
 
   return (
-    <div className="register-form-container">
-      <h2>Register</h2>
-      <form className="register-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="fname">First name</label>
-          <input
+    <Box
+      sx={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Container
+        maxWidth="xs"
+        sx={{
+          backgroundColor: 'rgba(255, 255, 255, 0.85)',
+          padding: 4,
+          borderRadius: 2,
+          boxShadow: 3,
+        }}
+      >
+        <Typography
+          variant="h4"
+          component="h1"
+          gutterBottom
+          align="center"
+          sx={{ fontFamily: 'Quicksand, sans-serif' }}
+        >
+          Create Account
+        </Typography>
+
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <TextField
+            label="First Name"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
             value={fname}
             onChange={(e) => setFname(e.target.value)}
-            name="fname"
-            id="fname"
-            placeholder="First Name"
+            sx={{ fontFamily: 'Quicksand, sans-serif' }}
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="lname">Last name</label>
-          <input
+          <TextField
+            label="Last Name"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
             value={lname}
             onChange={(e) => setLname(e.target.value)}
-            name="lname"
-            id="lname"
-            placeholder="Last Name"
+            sx={{ fontFamily: 'Quicksand, sans-serif' }}
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
+          <TextField
+            label="Email Address"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            id="email"
-            placeholder="pid@vt.edu"
-            type="email"
+            sx={{ fontFamily: 'Quicksand, sans-serif' }}
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="phoneNumber">Phone Number</label>
-          <input
+          <TextField
+            label="Phone Number"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            id="phoneNumber"
-            name="phoneNumber"
-            placeholder="###-###-####"
+            sx={{ fontFamily: 'Quicksand, sans-serif' }}
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
+          <TextField
+            label="Password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
+            type="password"
             value={pass}
             onChange={(e) => setPass(e.target.value)}
-            id="password"
-            name="password"
-            placeholder="********"
-            type="password"
+            sx={{ fontFamily: 'Quicksand, sans-serif' }}
           />
-        </div>
-
-        <button type="submit">Register</button>
-      </form>
-    </div>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{
+              padding: (theme) => theme.spacing(1.5),
+              fontWeight: 'bold',
+              fontSize: '1rem',
+              textTransform: 'none',
+              fontFamily: 'Quicksand, sans-serif',
+              mt: 2,
+            }}
+          >
+            Register
+          </Button>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
