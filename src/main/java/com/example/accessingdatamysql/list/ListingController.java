@@ -123,12 +123,32 @@ public class ListingController {
         }
         catch (Exception e)
         {
-            System.out.println("Could not delete, probably cause it does not exist or you aren't the owner Exception: " + e);
+            System.out.println("Could not get everything, maybe the table is empty Exception: " + e);
             response.put("result", "failure");
         }
         return response;
     }
 
-
+    @PostMapping(path="/user/all")
+    public @ResponseBody Map<String, Object> getItems(@RequestBody Map<String, Object> json)
+    {
+        Map<String, Object> response = new HashMap<>();
+        if (!json.containsKey("email"))
+        {
+            response.put("result", "failure - bad request");
+            return response;
+        }
+        try
+        {
+            response.put("data", customListingRepository.getAllUserListings((String) json.get("email")));
+            response.put("result", "success");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Could not get entries, maybe cause email not found? Exception: " + e);
+            response.put("result", "failure");
+        }
+        return response;
+    }
 
 }
