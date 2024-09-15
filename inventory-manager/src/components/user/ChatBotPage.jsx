@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import './ChatBotPage.css'; // We'll add some CSS for styling
+import React, { useState, useEffect } from 'react';
+import './ChatBotPage.css'; 
 
 function ChatBotPage() {
-  const [messages, setMessages] = useState([]);
+  // Start with a welcome message
+  const [messages, setMessages] = useState([
+    { sender: 'bot', text: 'Hello! Welcome to the chatbot. How can I assist you today?' }
+  ]);
   const [userInput, setUserInput] = useState('');
 
   const sendMessage = async () => {
@@ -10,7 +13,6 @@ function ChatBotPage() {
 
     const newUserMessage = { sender: 'user', text: userInput };
     
-    // Immediately update the state with the user's message (do not include it twice)
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
 
     try {
@@ -21,7 +23,6 @@ function ChatBotPage() {
       });
       const data = await response.json();
 
-      // Only append the bot's response to the messages
       const botMessage = { sender: 'bot', text: data.response };
       setMessages(prevMessages => [...prevMessages, botMessage]);
 
@@ -29,7 +30,6 @@ function ChatBotPage() {
       console.error('Error sending message:', error);
     }
 
-    // Clear the input field after the message is sent
     setUserInput(''); 
   };
 

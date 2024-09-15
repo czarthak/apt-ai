@@ -28,9 +28,7 @@ export const Navbar = ({ token }) => {
               <li>
                 <NavLink to="/register">Register</NavLink>
               </li>
-              <li>
-                <NavLink to="/bot">Chatbot</NavLink>
-              </li>
+              
 
             </>
           ) : (
@@ -51,6 +49,9 @@ export const Navbar = ({ token }) => {
                 <NavLink to="/listallorganizations">
                   Find Roomates
                 </NavLink>
+              </li>
+              <li>
+                <NavLink to="/bot">Chatbot</NavLink>
               </li>
               {/* <li>
                 <NavLink to="/allorganizationstatistics">
