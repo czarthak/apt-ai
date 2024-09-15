@@ -35,7 +35,6 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/bot" element={<ChatBotPage />} />
-        {/* For the personality test */}
         <Route element={<PrivateRoutes token={token} />}>
           <Route
             path="/dashboard/:userEmail"
@@ -46,6 +45,7 @@ function App() {
             path="/accountinfo"
             element={<AccountInformation token={token} />}
           />
+          <Route path="/searchListings" element={<SearchAllListings />} />
         </Route>
         <Route path="*" element={<NotFound />} />
         <Route path="/404" element={<NotFound />} />
@@ -55,7 +55,6 @@ function App() {
           path="/listallorganizations"
           element={<ListAllOrganizations />}
         />
-        <Route path="/searchListings" element={<SearchAllListings />} />
       </Routes>
     </div>
   );
