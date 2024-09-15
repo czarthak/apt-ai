@@ -248,6 +248,7 @@ const SearchAllListings = () => {
           flexGrow: 1,
           p: 3,
           overflowY: "auto",
+          backgroundColor: "#f5f5f5", // Light gray background
           display: "flex",
           flexDirection: "column",
         }}>
@@ -264,7 +265,12 @@ const SearchAllListings = () => {
                   alignItems: "flex-start",
                   p: 2,
                   borderRadius: 2,
-                  boxShadow: 3,
+                  boxShadow: 5, // Enhanced shadow for card elevation
+                  transition: "transform 0.3s ease", // Smooth hover effect
+                  "&:hover": {
+                    transform: "translateY(-5px)", // Card lift on hover
+                    boxShadow: 8, // Increased shadow on hover
+                  },
                 }}>
                 <CardContent>
                   <Typography variant="h6" component="div" gutterBottom>

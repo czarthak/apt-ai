@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./ListingDetails.css";
 import Axios from "axios";
+import {
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  Button,
+  CircularProgress,
+} from "@mui/material";
 
 function ListingDetails() {
   const { id } = useParams();
@@ -56,45 +63,48 @@ function ListingDetails() {
     };
 
     fetchListing();
-  }, [listing]);
+  }, [id]);
 
   if (!listing) {
-    return <p>Loading...</p>;
+    return (
+      <Container>
+        <CircularProgress />
+      </Container>
+    );
   }
 
   return (
-    <div className="listing-container">
-      <div className="listing-header">
-        <h1>{listing.address}</h1> {/* Using the 'id' field */}
-        <p className="listing-email">
-          <strong>Contact:</strong> {listing.email}
-        </p>
-        <p className="listing-price">
-          <strong>Price:</strong> ${listing.price}
-        </p>
-      </div>
-
-      <div className="listing-details">
-        <h2>Description</h2>
-        <p>{listing.description}</p>
-      </div>
-
-      <div className="listing-info">
-        <h2>Details</h2>
-        <ul>
-          <li>
+    <Container maxWidth="md" sx={{ paddingY: 4 }}>
+      <Card>
+        <CardContent>
+          <Typography variant="h4" component="h1" gutterBottom>
+            {listing.address}
+          </Typography>
+          <Typography variant="h6" color="textSecondary">
+            Contact: {listing.email}
+          </Typography>
+          <Typography variant="h5" color="primary" gutterBottom>
+            ${listing.price}
+          </Typography>
+          <Typography variant="h6" component="h2" gutterBottom>
+            Description
+          </Typography>
+          <Typography paragraph>{listing.description}</Typography>
+          <Typography variant="h6" component="h2" gutterBottom>
+            Details
+          </Typography>
+          <Typography paragraph>
             <strong>People:</strong> {listing.people}
-          </li>
-          <li>
+          </Typography>
+          <Typography paragraph>
             <strong>Bathrooms:</strong> {listing.bathrooms}
-          </li>
-        </ul>
-      </div>
-
-      <div className="listing-footer">
-        <button className="contact-button">Contact Seller</button>
-      </div>
-    </div>
+          </Typography>
+          <Button variant="contained" color="primary" fullWidth>
+            Contact Seller
+          </Button>
+        </CardContent>
+      </Card>
+    </Container>
   );
 }
 
