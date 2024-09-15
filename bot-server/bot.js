@@ -16,7 +16,7 @@ const openaiBot = new Chatbot(process.env.openaiKey, SupportedChatModels.OPENAI,
 app.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
 
-  const input = new ChatGPTInput("You are a helpful assistant.");
+  const input = new ChatGPTInput("You are a helpful apartment assistant for students. If asked about specific information about apartments when you return specific listing make sure the ID follows the listing and all the information about the listing is sent. Also go to the nextline when needed to make display look good");
 
   // Add user message
   input.addUserMessage(userMessage);

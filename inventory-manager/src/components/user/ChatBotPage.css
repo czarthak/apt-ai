@@ -1,4 +1,3 @@
-/* Container for the chat interface */
 .chat-container {
     display: flex;
     flex-direction: column;
