@@ -45,4 +45,20 @@ public class ListingController {
         }
         return response;
     }
+
+    @PostMapping(path="/onelisting")
+    public @ResponseBody Map<String, Object> getItemToken(@RequestBody Map<String, Object> json)
+    {
+        Map<String, Object> response = new HashMap<>();
+        if (!json.containsKey("dbId"))
+        {
+            response.put("result", "failure - bad request");
+            return response;
+        }
+        response.put("result", "success");
+        response.put("data", ListingRepository.findById((Integer.parseInt((String)json.get("dbId")))));
+        return response;
+    }
+
+
 }
