@@ -13,7 +13,9 @@ function ChatBotPage() {
 
     const newUserMessage = { sender: 'user', text: userInput };
     
+    // Immediately update the state with the user's message and clear the input field
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
+    setUserInput(''); // Clear the input field right after sending the message
 
     try {
       const response = await fetch('http://localhost:1000/chat', {
@@ -23,15 +25,15 @@ function ChatBotPage() {
       });
       const data = await response.json();
 
+      // Only append the bot's response to the messages
       const botMessage = { sender: 'bot', text: data.response };
       setMessages(prevMessages => [...prevMessages, botMessage]);
 
     } catch (error) {
       console.error('Error sending message:', error);
     }
+};
 
-    setUserInput(''); 
-  };
 
   return (
     <div className="chat-container">
