@@ -13,6 +13,7 @@ import {
   CreateRequest,
   ListAllOrganizations,
   OrganizationSearch,
+  ListingDetails,
 } from "./components/user/index";
 import useToken from "./components/useToken";
 import AccountInformation from "./components/user/AccountInformation";
@@ -47,6 +48,7 @@ function App() {
           />
           <Route path="/searchListings" element={<SearchAllListings />} />
         </Route>
+        <Route path="/listing/:id" element={<ListingDetails />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/404" element={<NotFound />} />
         {/*<Route path="/organizations/:orgId" element={<OrganizationDetails token={token}/>}>*/}
