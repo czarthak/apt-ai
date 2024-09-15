@@ -28,7 +28,7 @@ const SearchAllListings = () => {
       pets: "NO",
       sex: "EITHER",
       id: "listing001",
-      db_id: 1,
+      db_id: 18,
     },
     {
       email: "jane.smith@example.com",
@@ -40,7 +40,7 @@ const SearchAllListings = () => {
       pets: "YES",
       sex: "FEMALE",
       id: "listing002",
-      db_id: 2,
+      db_id: 22,
     },
     {
       email: "alice.brown@example.com",
@@ -52,7 +52,7 @@ const SearchAllListings = () => {
       pets: "SERVICE",
       sex: "EITHER",
       id: "listing003",
-      db_id: 3,
+      db_id: 23,
     },
     {
       email: "mark.jones@example.com",
@@ -64,7 +64,7 @@ const SearchAllListings = () => {
       pets: "NO",
       sex: "MALE",
       id: "listing004",
-      db_id: 4,
+      db_id: 24,
     },
     {
       email: "emily.watson@example.com",
@@ -76,7 +76,7 @@ const SearchAllListings = () => {
       pets: "YES",
       sex: "EITHER",
       id: "listing005",
-      db_id: 5,
+      db_id: 25,
     },
   ];
 
